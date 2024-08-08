@@ -375,6 +375,7 @@ export interface ApiCityCity extends Schema.CollectionType {
   attributes: {
     name: Attribute.String & Attribute.Required;
     code: Attribute.Integer;
+    posts: Attribute.Relation<'api::city.city', 'oneToMany', 'api::post.post'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -391,6 +392,7 @@ export interface ApiPostPost extends Schema.CollectionType {
     singularName: 'post';
     pluralName: 'posts';
     displayName: 'Post';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -400,6 +402,7 @@ export interface ApiPostPost extends Schema.CollectionType {
     description: Attribute.Blocks;
     price: Attribute.Float & Attribute.Required & Attribute.DefaultTo<0>;
     size: Attribute.Integer;
+    city: Attribute.Relation<'api::post.post', 'manyToOne', 'api::city.city'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

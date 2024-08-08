@@ -17,6 +17,12 @@
     },
     "code": {
       "type": "integer"
+    },
+    "posts": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::post.post",
+      "mappedBy": "city"
     }
   }
 }
