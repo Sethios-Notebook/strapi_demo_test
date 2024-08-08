@@ -829,6 +829,7 @@ export interface ApiPostPost extends Schema.CollectionType {
     price: Attribute.Float & Attribute.Required & Attribute.DefaultTo<0>;
     size: Attribute.Integer;
     city: Attribute.Relation<'api::post.post', 'manyToOne', 'api::city.city'>;
+    tags: Attribute.Relation<'api::post.post', 'manyToMany', 'api::tag.tag'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -851,6 +852,7 @@ export interface ApiTagTag extends Schema.CollectionType {
   };
   attributes: {
     name: Attribute.String;
+    posts: Attribute.Relation<'api::tag.tag', 'manyToMany', 'api::post.post'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
